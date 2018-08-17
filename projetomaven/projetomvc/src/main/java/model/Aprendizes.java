@@ -6,7 +6,7 @@ public class Aprendizes {
 	private String nome = "";
 	private String endereco = "";	
 	private String bairro = "";
-
+    private String cpf ="";
 	
 	public String getNome() {
 		return nome;
@@ -14,6 +14,12 @@ public class Aprendizes {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+    public String getCPF() {
+	    return cpf;
+    }
+    public void setCPF(String cpf) {
+	    this.cpf = cpf;
+    }
 	public String getEndereco() {
 		return endereco;
 	}

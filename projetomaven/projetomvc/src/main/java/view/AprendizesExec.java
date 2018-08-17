@@ -13,9 +13,9 @@
 			Cursos cursos = new Cursos();
 			
 			try {
-				cursos.setNome(" Matemática ");
-				cursos.setDias("Seg, Qua, Sex");
-				cursos.setCarga("6 horas");
+				cursos.setNome(" Ética ");
+				cursos.setDias("Quar");
+				cursos.setCarga("2 horas");
 
 				
 				Connection connection = JdbUtil.getConnection();

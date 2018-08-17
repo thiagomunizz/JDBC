@@ -15,7 +15,7 @@
 		}
 		
 		public void salvar(Aprendizes c) throws SQLException{
-			String sql = "insert into aprendizes (nome,endereco,bairro) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"')";
+			String sql = "insert into aprendiz (nome,endereco,bairro) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"')";
 			System.out.println(sql);
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			prepareStatement.executeUpdate();
@@ -23,7 +23,7 @@
 		} 
 		
 		public void deletar(int id) throws SQLException{
-			String sql = "delete from aprendizes where id ="+id;
+			String sql = "delete from aprendiz where id ="+id;
 			System.out.println(sql);
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			prepareStatement.executeUpdate();
