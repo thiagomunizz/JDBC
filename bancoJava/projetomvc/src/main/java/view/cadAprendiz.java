@@ -13,10 +13,7 @@ import controller.AprendizesJdbcDAO;
 import controller.JdbUtil;
 import model.Aprendizes;
 
-/**
- * Hello world!
- *
- */
+
 public class cadAprendiz extends JFrame
 {
 	JTextField txtNome = new JTextField();
