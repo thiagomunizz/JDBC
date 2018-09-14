@@ -24,7 +24,7 @@ public class GestoresJdbcDAO {
 	} 
 	
 	public void deletar(int id) throws SQLException{
-		String sql = "delete from gestores where id ="+id;
+		String sql = "delete from gestor where id_gestor ="+id;
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

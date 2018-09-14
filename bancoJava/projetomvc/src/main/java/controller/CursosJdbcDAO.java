@@ -4,7 +4,8 @@
 	import java.sql.PreparedStatement;
 	import java.sql.SQLException;
 
-	import model.Cursos;
+import model.Aprendizes;
+import model.Cursos;
 
 	public class CursosJdbcDAO {
 		
@@ -23,11 +24,26 @@
 		} 
 		
 		public void deletar(int id) throws SQLException{
-			String sql = "delete from cursos where id ="+id;
+			String sql = "delete from curso where id_curso ="+id;
 			System.out.println(sql);
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			prepareStatement.executeUpdate();
 			prepareStatement.close();
 		}
+		
+		public void alterar(Cursos c, int id) {
+			String sql = "update curso set nome='"+c.getNome()+"',dias='"+c.getDias()+"',carga='"+c.getCarga()+"' where id_curso =" + id;
+			System.out.println(sql);
+			PreparedStatement prepareStatement;
+			try {
+				prepareStatement = this.conn.prepareStatement(sql);
+				prepareStatement.executeUpdate();
+		        prepareStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+		}
+		
+		
 		
 	}

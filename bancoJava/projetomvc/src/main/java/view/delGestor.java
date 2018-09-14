@@ -9,10 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controller.AprendizesJdbcDAO;
+import controller.GestoresJdbcDAO;
 import controller.JdbUtil;
 
-public class delAprendiz extends JFrame {
+public class delGestor extends JFrame {
 	
 	JButton btnDeletar = new JButton("Deletar");
 	JTextField id = new JTextField();
@@ -20,8 +20,8 @@ public class delAprendiz extends JFrame {
 
 	 
 	
-	public delAprendiz() {
-	super("Deletar Aprendiz");
+	public delGestor() {
+	super("Deletar Gestor");
 	
 	Container paine = this.getContentPane();
 	
@@ -45,9 +45,9 @@ public class delAprendiz extends JFrame {
 		public void actionPerformed(ActionEvent e ) {
 			try {
 				Connection connection = JdbUtil.getConnection();
-				AprendizesJdbcDAO deletaraprendizesJdbcDAO = new AprendizesJdbcDAO(connection);
+				GestoresJdbcDAO deletargestoresJdbcDAO = new GestoresJdbcDAO(connection);
 				
-				deletaraprendizesJdbcDAO.deletar(Integer.parseInt(id.getText()));
+				deletargestoresJdbcDAO.deletar(Integer.parseInt(id.getText()));
 			}catch(Exception err) {
 				err.printStackTrace();
 			}
@@ -58,7 +58,7 @@ public class delAprendiz extends JFrame {
 	}
 	
 	public static void main(String args[]) {
-		delAprendiz dr = new delAprendiz();
+		delGestor dr = new delGestor();
 	}
 
 }

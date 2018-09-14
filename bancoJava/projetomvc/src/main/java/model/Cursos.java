@@ -2,10 +2,19 @@ package model;
 
 public class Cursos {
 
+	private Integer id;
 	private String nome = "";
 	private String dias = "";	
 	private String carga = "";
 
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

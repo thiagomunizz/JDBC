@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,58 +15,71 @@ import controller.JdbUtil;
 import model.Cursos;
 
 
-public class cadCurso extends JFrame
-{
+public class alterarCurso extends JFrame {
+	
+	JTextField txtId = new JTextField();
+	JLabel id = new JLabel("ID: ");
+	
+	
 	JTextField txtNome = new JTextField();
 	JLabel nome = new JLabel("NOME: ");
-		
+	
 	JTextField txtDias = new JTextField();
 	JLabel dias = new JLabel("DIAS: ");
 	
 	JTextField txtCarga = new JTextField();
 	JLabel carga = new JLabel("CARGA: ");
+
+
 	
-
-
-	JButton btnSalvar = new JButton("Salvar");
-
-	public cadCurso(){
-		super("Cadastro de Cursos");
+	JButton btnSalvar = new JButton("Alterar");
+	public alterarCurso(){
+		super("Alterar Curso");
 		
 		Container paine = this.getContentPane();
 		
+
+		
+		paine.add(id);
+		paine.add(txtId);	
+		id.setBounds(10, 15, 45, 30);
+		txtId.setBounds(90, 15, 225, 30);
+		
 		paine.add(nome);
 		paine.add(txtNome);	
-		nome.setBounds(10, 15, 45, 30);
-		txtNome.setBounds(90, 15, 225, 30);
+		nome.setBounds(10, 50, 70, 30);
+		txtNome.setBounds(90, 50, 225, 30);	
 		
 		paine.add(dias);
 		paine.add(txtDias);	
-		dias.setBounds(10, 50, 70, 30);
-		txtDias.setBounds(90, 50, 225, 30);	
+		dias.setBounds(10, 85, 70, 30);
+		txtDias.setBounds(90, 85, 225, 30);
 		
-		paine.add(carga);
-		paine.add(txtCarga);	
-		carga.setBounds(10, 85, 70, 30);
-		txtCarga.setBounds(90, 85, 225, 30);
+		paine.add(carga); 
+		paine.add(txtCarga);
+		carga.setBounds(10, 120, 70, 30);
+		txtCarga.setBounds(90, 120, 225, 30);
 		
 
+		
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);
 		btnSalvar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
-				Cursos cursos = new Cursos();
-				cursos.setNome(txtNome.getText());
-				cursos.setDias(txtDias.getText());
-				cursos.setCarga(txtCarga.getText());
-
-				
+					
+					
+					Cursos curso = new Cursos();
+					curso.setId(Integer.parseInt( txtId.getText() ));
+					curso.setNome(txtNome.getText());
+					curso.setDias(txtDias.getText());
+					curso.setCarga(txtCarga.getText());
 				Connection connection = JdbUtil.getConnection();
-				CursosJdbcDAO cursosJdbcDao = new CursosJdbcDAO(connection);
 				
-				cursosJdbcDao.salvar(cursos);
+				CursosJdbcDAO  cursoJdbcDAO = new CursosJdbcDAO(connection);
+				
+				cursoJdbcDAO.alterar(curso, curso.getId());
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();
@@ -81,6 +95,11 @@ public class cadCurso extends JFrame
 	}
     public static void main( String[] args )
     {
-    	cadCurso cadcurso = new cadCurso();
+    	alterarCurso ap = new alterarCurso();
     }
 }
+	
+	
+	
+	
+	

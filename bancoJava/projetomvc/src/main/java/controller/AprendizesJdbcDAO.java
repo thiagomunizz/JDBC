@@ -23,11 +23,24 @@
 		} 
 		
 		public void deletar(int id) throws SQLException{
-			String sql = "delete from aprendiz where id ="+id;
+			String sql = "delete from aprendiz where id_aprendiz ="+id;
 			System.out.println(sql);
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			prepareStatement.executeUpdate();
 			prepareStatement.close();
 		}
 		
+		public void alterar(Aprendizes c, int id) {
+			String sql = "update aprendiz set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"',cpf='"+c.getCpf()+"' where id_aprendiz =" + id;
+			System.out.println(sql);
+			PreparedStatement prepareStatement;
+			try {
+				prepareStatement = this.conn.prepareStatement(sql);
+				prepareStatement.executeUpdate();
+		        prepareStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+		}
+	
 	}
